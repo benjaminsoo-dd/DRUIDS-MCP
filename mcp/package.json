@@ -1,0 +1,31 @@
+{
+    "name": "@~druids-toolkit/mcp",
+    "description": "DRUIDS MCP Server",
+    "private": true,
+    "volta": {
+        "extends": "../../../../../../package.json"
+    },
+    "$schema": "../../../../../../package.schema.json",
+    "environment": "server",
+    "exports": {
+        ".": "./index.js"
+    },
+    "scripts": {
+        "test-unit": "test-unit:workspace",
+        "lint": "lint:workspace",
+        "typecheck": "typecheck:workspace",
+        "generate-doc": "generate-doc:workspace"
+    },
+    "devDependencies": {
+        "@docs-builder-lib/browser": "workspace:*",
+        "@docs-builder-lib/node": "workspace:*",
+        "@types/datadog": "workspace:*",
+        "@types/node": "22.13.5",
+        "tsserver-plugin": "workspace:*",
+        "~": "link:."
+    },
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "1.12.1",
+        "@tools-lib/ts-node": "workspace:*"
+    }
+}
