@@ -6,7 +6,8 @@ import {
     QueryEngineTool, 
     OpenAIAgent, 
     VectorIndexRetriever, 
-    RetrieverQueryEngine 
+    RetrieverQueryEngine,
+    OpenAI
 } from 'llamaindex';
 
 let queryEngineTool: QueryEngineTool | null = null;
@@ -51,6 +52,11 @@ async function getChatEngine(userId: string): Promise<OpenAIAgent> {
 
         const chatEngine = new OpenAIAgent({
             tools: [queryEngineTool],
+            // 3.5 deprecated, use gpt-4
+            llm: new OpenAI({
+                model: process.env.OPENAI_MODEL || "gpt-4",
+                apiKey: process.env.OPENAI_API_KEY,
+            }),
             verbose: true,
             prefixMessages: [
                       {
